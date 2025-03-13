@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de Plantas - Banner Principal</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    .banner-container {
+      width: 100%;
+      max-width: 1200px;
+      height: 500px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .banner-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1e5f2f, #338f47);
+      overflow: hidden;
+    }
+    
+    .leaf {
+      position: absolute;
+      opacity: 0.2;
+      animation: leafFloat 15s linear infinite;
+    }
+    
+    @keyframes leafFloat {
+      0% {
+        transform: translateY(100%) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.2;
+      }
+      90% {
+        opacity: 0.2;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    .banner-content {
+      position: relative;
+      z-index: 10;
+      padding: 40px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: white;
+    }
+    
+    .banner-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .banner-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards 0.2s;
+    }
+    
+    .banner-text {
+      max-width: 600px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards 0.4s;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background-color: #fff;
+      color: #338f47;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards 0.6s;
+    }
+    
+    .btn:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .plants-container {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 45%;
+      height: 90%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+    
+    .plant {
+      position: absolute;
+      bottom: -20px;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    
+    .plant1 {
+      right: 50px;
+      height: 80%;
+      animation: plantGrow 1s ease forwards 0.8s;
+    }
+    
+    .plant2 {
+      right: 180px;
+      height: 65%;
+      animation: plantGrow 1s ease forwards 1s;
+    }
+    
+    .plant3 {
+      right: 300px;
+      height: 50%;
+      animation: plantGrow 1s ease forwards 1.2s;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes plantGrow {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    .particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    
+    @media (max-width: 768px) {
+      .banner-title {
+        font-size: 2.5rem;
+      }
+      
+      .banner-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .plants-container {
+        width: 35%;
+      }
+      
+      .plant1 {
+        right: 20px;
+      }
+      
+      .plant2 {
+        right: 100px;
+      }
+      
+      .plant3 {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner-container">
+    <div class="banner-bg" id="banner-bg">
+      <!-- Leaves will be added by JS -->
+    </div>
+    
+    <div class="banner-content">
+      <h1 class="banner-title">Naturaleza Viva</h1>
+      <h2 class="banner-subtitle">Transforma tu espacio con nuestras plantas</h2>
+      <p class="banner-text">Descubre nuestra selección exclusiva de plantas de interior y exterior. Cada planta es cultivada con amor para llevar vida y belleza a tu hogar.</p>
+      <a href="#" class="btn" id="shop-now">Comprar Ahora</a>
+    </div>
+    
+    <div class="plants-container">
+      <div class="plant plant1">
+        <svg width="200" height="400" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M100 350C100 350 120 200 100 150C80 100 60 80 80 50C100 20 110 10 130 30C150 50 140 80 130 100C120 120 140 150 150 200C160 250 150 350 150 350" fill="#4CAF50"/>
+          <path d="M90 350C90 350 70 250 80 200C90 150 100 130 90 100C80 70 70 60 50 70C30 80 30 100 40 120C50 140 45 160 40 200C35 240 50 350 50 350" fill="#66BB6A"/>
+          <rect x="95" y="350" width="10" height="50" fill="#8D6E63"/>
+        </svg>
+      </div>
+      <div class="plant plant2">
+        <svg width="160" height="320" viewBox="0 0 160 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M80 280C80 280 100 180 80 130C60 80 50 70 50 50C50 30 60 20 70 30C80 40 80 60 75 80C70 100 85 140 90 180C95 220 90 280 90 280" fill="#66BB6A"/>
+          <path d="M70 280C70 280 50 220 60 180C70 140 75 120 65 100C55 80 50 70 40 80C30 90 35 110 40 130C45 150 40 180 35 220C30 260 40 280 40 280" fill="#81C784"/>
+          <rect x="75" y="280" width="8" height="40" fill="#A1887F"/>
+        </svg>
+      </div>
+      <div class="plant plant3">
+        <svg width="120" height="240" viewBox="0 0 120 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60 200C60 200 75 140 60 100C45 60 35 50 40 30C45 10 55 5 60 15C65 25 65 45 60 65C55 85 65 110 70 140C75 170 70 200 70 200" fill="#81C784"/>
+          <path d="M50 200C50 200 35 170 40 140C45 110 55 95 50 75C45 55 35 45 30 55C25 65 25 80 30 95C35 110 30 140 25 165C20 190 30 200 30 200" fill="#A5D6A7"/>
+          <rect x="55" y="200" width="6" height="30" fill="#A1887F"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Crear hojas flotantes
+    function createLeaves() {
+      const bg = document.getElementById('banner-bg');
+      const leafCount = 30;
+      
+      for (let i = 0; i < leafCount; i++) {
+        const leaf = document.createElement('div');
+        leaf.classList.add('leaf');
+        
+        // Forma aleatoria de hoja
+        const leafShape = Math.floor(Math.random() * 3);
+        let leafSVG = '';
+        
+        switch (leafShape) {
+          case 0:
+            leafSVG = `<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 5C10 5 5 10 5 15C5 20 10 25 15 25C20 25 25 20 25 15C25 10 20 5 15 5Z" fill="#ffffff"/>
+            </svg>`;
+            break;
+          case 1:
+            leafSVG = `<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 15C5 10 10 5 15 5C20 5 25 10 25 15C25 20 20 25 15 25C10 25 5 20 5 15Z" fill="#ffffff"/>
+            </svg>`;
+            break;
+          case 2:
+            leafSVG = `<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 5C10 10 5 15 5 20C5 25 10 25 15 25C20 25 25 25 25 20C25 15 20 10 15 5Z" fill="#ffffff"/>
+            </svg>`;
+            break;
+        }
+        
+        leaf.innerHTML = leafSVG;
+        
+        // Posición y tamaño aleatorios
+        const size = Math.random() * 20 + 10;
+        leaf.style.width = `${size}px`;
+        leaf.style.height = `${size}px`;
+        leaf.style.left = `${Math.random() * 100}%`;
+        
+        // Tiempo de animación aleatorio
+        const duration = Math.random() * 10 + 10;
+        leaf.style.animationDuration = `${duration}s`;
+        
+        // Retraso aleatorio
+        const delay = Math.random() * 10;
+        leaf.style.animationDelay = `${delay}s`;
+        
+        bg.appendChild(leaf);
+      }
+    }
+    
+    // Crear efecto de partículas al pasar el ratón
+    function createParticleEffect() {
+      const container = document.querySelector('.banner-container');
+      
+      container.addEventListener('mousemove', (e) => {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Posición basada en el ratón
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        
+        // Animación de desvanecimiento
+        particle.style.animation = 'fadeOut 1.5s ease-out forwards';
+        
+        // Añadir movimiento aleatorio
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 3 + 1;
+        const translateX = Math.cos(angle) * 50 * speed;
+        const translateY = Math.sin(angle) * 50 * speed;
+        
+        particle.style.transform = `translate(${translateX}px, ${translateY}px)`;
+        
+        // Añadir partícula al DOM
+        container.appendChild(particle);
+        
+        // Eliminar partícula después de la animación
+        setTimeout(() => {
+          particle.remove();
+        }, 1500);
+      });
+    }
+    
+    // Efecto de hover en el botón
+    function buttonEffect() {
+      const button = document.getElementById('shop-now');
+      
+      button.addEventListener('mouseover', () => {
+        button.style.transform = 'translateY(-5px)';
+        button.style.boxShadow = '0 15px 25px rgba(0, 0, 0, 0.2)';
+      });
+      
+      button.addEventListener('mouseout', () => {
+        button.style.transform = 'translateY(0)';
+        button.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+      });
+      
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Efecto de pulsación
+        button.style.transform = 'scale(0.95)';
+        
+        setTimeout(() => {
+          button.style.transform = 'scale(1)';
+        }, 100);
+        
+        // Aquí iría la redirección o acción
+        console.log('¡Botón pulsado!');
+      });
+    }
+    
+    // Inicializar todos los efectos cuando se carga la página
+    window.addEventListener('DOMContentLoaded', () => {
+      createLeaves();
+      createParticleEffect();
+      buttonEffect();
+    });
+  </script>
+</body>
+</html>
